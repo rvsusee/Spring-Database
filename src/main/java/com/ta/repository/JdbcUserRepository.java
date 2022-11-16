@@ -16,22 +16,22 @@ public class JdbcUserRepository implements UserRepository {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public int save(User user) {
+	public int addNewUser(User user) {
 		String sql = "INSERT INTO SUSEENDHIRAN_MATRIMONY_USERS(email,password) VALUES (?,?)";
 		return jdbcTemplate.update(sql, new Object[] { user.getEmail(), user.getPassword() });
 	}
 
-
 	@Override
-	public int update(User user) {
+	public int updateUser(User user) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public User findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public int findByEmail(User user) {
+		String sql = "SELECT * FROM SUSEENDHIRAN_MATRIMONY_USERS WHERE email = ?";
+		int temp = jdbcTemplate.update(sql, new Object[] { user.getEmail()});
+		return jdbcTemplate.update(sql, new Object[] { user.getEmail()});
 	}
 
 	@Override
@@ -42,7 +42,8 @@ public class JdbcUserRepository implements UserRepository {
 
 	@Override
 	public List<User> findAll() {
-		return jdbcTemplate.query("SELECT * from SUSEENDHIRAN_MATRIMONY_USERS", BeanPropertyRowMapper.newInstance(User.class));
+		return jdbcTemplate.query("SELECT * from SUSEENDHIRAN_MATRIMONY_USERS",
+				BeanPropertyRowMapper.newInstance(User.class));
 	}
 
 }

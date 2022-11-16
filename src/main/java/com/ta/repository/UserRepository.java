@@ -10,11 +10,11 @@ import com.ta.model.User;
 @Configurable
 @Repository
 public interface UserRepository {
-	int save(User user);
+	int addNewUser(User user);
 
-	int update(User user);
+	int updateUser(User user);
 
-	User findById(int id);
+	int findByEmail(User user);
 
 	int deleteById(int id);
 
