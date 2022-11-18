@@ -50,6 +50,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "Tutorial [userID = " + userID + ", email = " + email + ", password = " + password + "]";
+		return "userID = " + userID + ", email = " + email + ", password = " + password + "";
 	}
 }
